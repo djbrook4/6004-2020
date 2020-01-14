@@ -14,18 +14,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import java.util.function.DoubleSupplier;
 
 public class DriveTrain extends SubsystemBase {
   /**
    * Drive Train.
    */
+
   
     private  TalonFX m_leftMotor;
     private  TalonFX m_leftMotor_1;
     private  TalonFX m_rightMotor;
     private  TalonFX m_rightMotor_1;
     private  DifferentialDrive m_drive;
+    
   public DriveTrain() {
+    
     super();
 
 
@@ -47,7 +51,7 @@ public class DriveTrain extends SubsystemBase {
   }
   public void drive(double left, double right){
     if(m_drive != null){
-      m_drive.tankDrive(0-right, 0-left);
+
     }
   }
 
