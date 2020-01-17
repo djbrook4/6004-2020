@@ -22,11 +22,11 @@ public class DriveTrain extends SubsystemBase {
    */
 
   
-    private  TalonFX m_leftMotor;
-    private  TalonFX m_leftMotor_1;
-    private  TalonFX m_rightMotor;
-    private  TalonFX m_rightMotor_1;
-    private  DifferentialDrive m_drive;
+    TalonFX m_leftMotor;
+    TalonFX m_leftMotor_1;
+    TalonFX m_rightMotor;
+    TalonFX m_rightMotor_1;
+    DifferentialDrive m_drive;
     
   public DriveTrain() {
     
@@ -45,7 +45,7 @@ public class DriveTrain extends SubsystemBase {
     m_leftMotor_1.follow(m_leftMotor);
 
     m_rightMotor.set(ControlMode.PercentOutput,2);
-    m_rightMotor_1.set(ControlMode.PercentOutput,4);
+    m_rightMotor_1.set(ControlMode.PercentOutput,4); 
     m_rightMotor_1.follow(m_rightMotor);
 
   }
