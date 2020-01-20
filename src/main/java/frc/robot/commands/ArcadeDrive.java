@@ -11,7 +11,6 @@
 
 package frc.robot.commands;
 
-
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -25,37 +24,25 @@ import edu.wpi.first.wpilibj.Joystick;
 public class ArcadeDrive extends CommandBase {
     private final DriveTrain m_drivetrain;
     
-    private final Double m_left;
-    private final Double m_right;
+    private final DoubleSupplier m_left;
+    private final DoubleSupplier m_right;
     private Joystick stick;
     private Double xAxis;
     private Double yAxis;
     private Double zAxis;   
   
 
-  public ArcadeDrive(Double left, Double right, DriveTrain drivetrain) {
-    xAxis = stick.getRawAxis(0);
-    yAxis = stick.getRawAxis(1);
-    zAxis = stick.getRawAxis(2);
-
-    left = (xAxis + zAxis);
-    right = (xAxis + -zAxis);
-
-    m_drivetrain = drivetrain;
+  public ArcadeDrive(DoubleSupplier left, DoubleSupplier right, DriveTrain drivetrain) {
     m_left = left;
     m_right = right;
+    m_drivetrain = drivetrain;
     addRequirements(m_drivetrain);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-
-
-    m_drivetrain.drive(-m_left, -m_right);
-
-    
-
+    m_drivetrain.drive(-m_left.getAsDouble(),-m_right.getAsDouble());
   }
 
   // Make this return true when this Command no longer needs to run execute()
